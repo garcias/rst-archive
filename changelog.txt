@@ -41,3 +41,35 @@ text:
 163.journals: join journal name and volume
 167.journals: remove empty 2nd journal
 167.journals: remove empty 4th journal
+
+
+# Manual changes to separate text in blocks
+
+Add the character "||" between citations in blocks that contain multiple citations.
+
+First find out which blocks have multiple entries. Seems that ")." is a pretty consistent marker of a unique citation. Search for this in the 'text' field of each block and fitler on it.
+
+block_counts = filter( lambda (i,b): b > 1, [ (i, block['text'].count(').')) for i,block in enumerate(blocks) ] )
+
+Result is:
+
+(30, 2) - not really
+(31, 4) - only 2
+(39, 2) 
+(42, 7)
+(48, 5)
+(52, 3)
+(56, 2) - not really
+(59, 4)
+(80, 2) - not really
+(90, 2)
+(118, 3)
+(119, 2)
+(120, 13)
+(135, 2)
+(144, 2)
+(148, 2)
+(150, 2)
+(154, 2)
+(158, 8)
+(167, 2)
