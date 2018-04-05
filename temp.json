@@ -226,7 +226,9 @@
   }, 
   {
     "index": 15, 
-    "journals": [], 
+    "journals": [
+      "Journal of Experimental Social Psychology, 40"
+    ], 
     "links": [
       {
         "text": "Bosson, J. K., Haymovitz, E. L., & Pinel, E. C. (2004)", 
@@ -623,8 +625,7 @@
       "Group Processes & Intergroup Relations, 11,", 
       "Self-Theories: Their role in motivation, personality and development.", 
       "Psychological Review, 95,", 
-      "oping", 
-      ".", 
+      "Coping", 
       "Journal of Personality and Social Psychology, 54,", 
       "Journal of Educational Psychology, 91,"
     ], 
@@ -704,7 +705,7 @@
     "journals": [
       "Personality and Social Psychology Bulletin, 28,", 
       "Journal of Applied Developmental Psychology, 29", 
-      "Journal of Applied Developmental Psychology, 24,"
+      "Journal of Applied Developmental Psychology, 24,",
     ], 
     "links": [
       {
@@ -866,7 +867,6 @@
       "Psychological Science, 11,", 
       "Journal of Educational Psychology, 95,", 
       "Stigma and group inequality: Social psychological approaches", 
-      ""
     ], 
     "links": [
       {
@@ -984,7 +984,9 @@
   }, 
   {
     "index": 67, 
-    "journals": [], 
+    "journals": [
+      "Sex Roles, 47"
+    ], 
     "links": [
       {
         "text": "Keller, J. (2002)", 
@@ -993,7 +995,7 @@
         ]
       }
     ], 
-    "text": "Keller, J. (2002)"
+    "text": "Keller, J. (2002). Blatant stereotype threat and women’s math performance: Self-handicapping as a strategic means to cope with obtrusive negative performance expectations. Sex Roles, 47, 193–198."
   }, 
   {
     "index": 68, 
@@ -1140,8 +1142,7 @@
   {
     "index": 77, 
     "journals": [
-      "Organizational Behavior and Human Decision Processes", 
-      "87"
+      "Organizational Behavior and Human Decision Processes, 87"
     ], 
     "links": [
       {
@@ -1209,8 +1210,7 @@
   {
     "index": 82, 
     "journals": [
-      "Journal of Personality and Social Psychology", 
-      "71"
+      "Journal of Personality and Social Psychology, 71"
     ], 
     "links": [
       {
@@ -1225,8 +1225,7 @@
   {
     "index": 83, 
     "journals": [
-      "Personality and Social Psychology Bulletin", 
-      "26,"
+      "Personality and Social Psychology Bulletin, 26"
     ], 
     "links": [
       {
@@ -1443,7 +1442,9 @@
   }, 
   {
     "index": 98, 
-    "journals": [], 
+    "journals": [
+      "Journal of Applied Social Psychology, 32"
+    ], 
     "links": [
       {
         "text": "McKay, P. F., Doverspike, D., Bowen-Hilton, D., & Martin, Q. D. (2002)", 
@@ -1452,7 +1453,7 @@
         ]
       }
     ], 
-    "text": "McKay, P. F., Doverspike, D., Bowen-Hilton, D., & Martin, Q. D. (2002)"
+    "text": "McKay, P. F., Doverspike, D., Bowen-Hilton, D., & Martin, Q. D. (2002). Stereotype threat effects on the Raven Advanced Progressive Matrices scores of African Americans. Journal of Applied Social Psychology, 32, 767–787."
   }, 
   {
     "index": 99, 
@@ -1486,9 +1487,11 @@
   }, 
   {
     "index": 101, 
-    "journals": [], 
+    "journals": [
+      "Journal of Personality and Social Psychology, 83"
+    ], 
     "links": [], 
-    "text": "Mendoza-Denton, R., Purdie, V., Downey, G., & Davis, A. (2002). Sensitivity to status-based rejection: Implications for African-American students\u2019 college experience."
+    "text": "Mendoza-Denton, R., Purdie, V., Downey, G., & Davis, A. (2002). Sensitivity to status-based rejection: Implications for African-American students\u2019 college experience. Journal of Personality and Social Psychology, 83, 896–918."
   }, 
   {
     "index": 102, 
@@ -1554,8 +1557,7 @@
   {
     "index": 107, 
     "journals": [
-      "Journal of Applied Psychology, 93,", 
-      ""
+      "Journal of Applied Psychology, 93,"
     ], 
     "links": [
       {
@@ -1675,8 +1677,7 @@
   {
     "index": 115, 
     "journals": [
-      "Educational Psychology, 27,", 
-      ""
+      "Educational Psychology, 27,"
     ], 
     "links": [
       {
@@ -1706,8 +1707,7 @@
   {
     "index": 117, 
     "journals": [
-      "Current Psychology: Developmental, Learning, Personality, Social", 
-      "19"
+      "Current Psychology: Developmental, Learning, Personality, Social, 19"
     ], 
     "links": [
       {
@@ -1759,7 +1759,6 @@
       "Journal of Vocational Behavior, 62,", 
       "Personality and Social Psychology Bulletin, 32,", 
       "European Journal of Social Psychology, 37,", 
-      "", 
       "Educational Psychologist, 40,", 
       "Journal of Personality and Social Psychology.", 
       "American Psychologist, 59,", 
@@ -1880,8 +1879,7 @@
   {
     "index": 124, 
     "journals": [
-      "European Journal of Social Psychology, 37,", 
-      ""
+      "European Journal of Social Psychology, 37,"
     ], 
     "links": [
       {
@@ -2166,8 +2164,7 @@
   {
     "index": 145, 
     "journals": [
-      "Journal of Personality and Social Psychology", 
-      "75"
+      "Journal of Personality and Social Psychology, 75"
     ], 
     "links": [
       {
@@ -2343,13 +2340,11 @@
     "index": 158, 
     "journals": [
       "Journal of Personality and Social Psychology, 89,", 
-      "Sex Roles", 
-      "41", 
+      "Sex Roles, 41", 
       "Journal of Experimental Social Psychology, 39,", 
       "Journal of Personality and Social Psychology, 92,", 
       "American Psychologist, 53,", 
-      "Psychological Bulletin", 
-      "127", 
+      "Psychological Bulletin, 127", 
       "Journal of Personality and Social Psychology, 89,", 
       "Journal of Experimental Social Psychology, 44,"
     ], 
@@ -2450,8 +2445,7 @@
   {
     "index": 163, 
     "journals": [
-      "Psychological Bulletin", 
-      "127"
+      "Psychological Bulletin, 127"
     ], 
     "links": [], 
     "text": "Wheeler, S. C., & Petty, R. E. (2001). The effects of stereotype activation on behavior: A review of possible mechanisms. Psychological Bulletin, 127, 797-826."
@@ -2505,9 +2499,7 @@
     "index": 167, 
     "journals": [
       "Basic and Applied Social Psychology, 27,", 
-      "", 
       "Journal of Social Issues, 60", 
-      ","
     ], 
     "links": [
       {

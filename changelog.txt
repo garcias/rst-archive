@@ -1,0 +1,43 @@
+
+# Scrape bibliography page
+
+Run bibliography scraper
+
+python bibliography.py > temp.json
+
+Resulting document has 170 blocks, with following fields:
+
+index:
+journals:
+  -
+links:
+  - text:
+    href:
+text:
+
+
+# Manual changes to journal lists and text as needed
+
+15.journals: Add name "Journal of Experimental Social Psychology, 40"
+42.journals: Change "oping" to "Coping"
+59.journals: remove empty 4th journal
+67.journals: Add name "Sex Roles, 47"
+67.text: append " Blatant stereotype threat and women’s math performance: Self-handicapping as a strategic means to cope with obtrusive negative performance expectations. Sex Roles, 47, 193–198."
+77.journals: join journal name and volume
+82.journals: join journal name and volume
+83.journals: join journal name and volume
+98.journals: add name "Journal of Applied Social Psychology, 32"
+98.text: append " Stereotype threat effects on the Raven Advanced Progressive Matrices scores of African Americans. Journal of Applied Social Psychology, 32,767–787."
+101.journals: add name "Journal of Personality and Social Psychology, 83"
+101.text: append " Journal of Personality and Social Psychology, 83, 896–918."
+107.journals: remove empty 2nd journal
+115.journals: remove empty 2nd journal
+117.journals: join journal name and volume
+120.journals: remove empty 7th journal
+124.journals: remove empty 2nd journal
+145.journals: join journal name and volume
+158.journals[1]: join journal name and volume
+158.journals[6]: join journal name and volume
+163.journals: join journal name and volume
+167.journals: remove empty 2nd journal
+167.journals: remove empty 4th journal
