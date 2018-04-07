@@ -180,6 +180,8 @@ Run `python split-citations.py > citations.json`
 
 Also checks for and removes duplicates, using `pandas.DataFrame.groupby` to identify unique groups.
 
+In `citations.json`, add entry for Abrams, Eller, and Bryant b/c wasn't picked up in initial scrape.
+
 # Following links to grab annotations (next)
 
 Check that all links can be followed successfully.
