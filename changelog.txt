@@ -147,13 +147,17 @@ Detect any discrepancies.
     # []
 ```
 
-No issues for link correspondence! But for journal correspondence, four blocks contain `False` or no values. Make changes manually.
+No issues for link correspondence! But for journal correspondence, four blocks contain `False` or no values. 
+
+# Manual changes to resolve inconsistencies in journals
 
 ```
     15.citations: is incomplete. Append " When saying and doing diverge: The effects of stereotype threat on self-reported versus non-verbal anxiety. Journal of Experimental Social Psychology, 40, 247–255."
     131: is empty. Delete
     168: is a duplicate. Delete
     169: is empty. Delete
+    198: is a duplicate. Delete
+    159: is a duplicate. Delete (discovered by inspection)
 ```
 
 Save changes to `blocks.json`.
@@ -163,10 +167,21 @@ Save changes to `blocks.json`.
 At this point, we should be able to construct a list of individual citations:
 ```
     - citation: 
-      citation_md: # marked up with <i class='journal'></i>
-      href: # use in the future just as an identifier, or to construct separate file
-      annotation:
-        - title: # scraped from wayback annotation page
-          annotation: # scraped from wayback
-          doi: # much bigger project probably using Google Scholar API
+      citation_md:  # marked up with <i class='journal'></i>
+      href:         # use in the future just as an identifier, or to construct separate file
+      title:        # scraped from wayback annotation page
+      annotation:   # scraped from wayback
+      doi:          # much bigger project probably using Google Scholar API
 ```
+
+# Split to individual citations
+
+Run `python split-citations.py > citations.json` 
+
+Also checks for and removes duplicates, using `pandas.DataFrame.groupby` to identify unique groups.
+
+# Following links to grab annotations (next)
+
+Check that all links can be followed successfully.
+
+
