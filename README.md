@@ -11,3 +11,12 @@ Sometime in May 2017 the site went down. I searched for reports about why this m
 This project is my attempt to extract the relevant data from the archived pages. My immediate goal is to have the data available for colleagues, students, and trainees to access. My longer-term goal is to make the data available through an API, enabling others to build new resources from it (like maybe reviews, case studies, or more recent research). My stretch goal is to find a valid doi corresponding to each citation.
 
 ## How?
+
+1. Run `bibliography.py` to scrape the bibliography page (on Wayback) into `temp.json`.
+2. Inspect `temp.json` and make manual changes, such as joining journal name and volume, or appending missing text to citation.
+3. Detect blocks of text containing multiple citations entries.
+4. Mark separation between citations with ` || `.
+5. Run `split-blocks.py` to split text into lists of citations within each block; save into `blocks.json`.
+6. Detect and fix discrepancies between citation list and journal and href lists within each block.
+7. Run `split-citations.py` to create a separate bibliographic entry for each citation; save into `citations.json`
+
