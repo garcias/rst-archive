@@ -19,4 +19,6 @@ This project is my attempt to extract the relevant data from the archived pages.
 5. Run `split-blocks.py` to split text into lists of citations within each block; save into `blocks.json`.
 6. Detect and fix discrepancies between citation list and journal and href lists within each block.
 7. Run `split-citations.py` to create a separate bibliographic entry for each citation; save into `citations.json`
+8. Run `annotations.py` to scrape annotation text from Internet Archive; save into `annotations.json`
+9. Run `separate-title.py` to extract title text into new field; save into `bibliography.json`.
 
