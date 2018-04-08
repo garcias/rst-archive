@@ -22,3 +22,6 @@ This project is my attempt to extract the relevant data from the archived pages.
 8. Run `annotations.py` to scrape annotation text from Internet Archive; save into `annotations.json`
 9. Run `separate-title.py` to extract title text into new field; save into `bibliography.json`.
 
+## To do
+
+- Scrape topic pages and store as JSON
