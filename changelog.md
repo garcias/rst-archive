@@ -4,7 +4,7 @@
 Run bibliography scraper.
 
 ```bash
-    python bibliography.py > temp.json
+    python scrape.py > scrape.json
 ```
 
 Resulting document has 170 blocks, with following fields:
@@ -47,7 +47,7 @@ Resulting document has 170 blocks, with following fields:
     167.journals: remove empty 4th journal
 ```
 
-Save changes to `temp.json`.
+Save changes to `scrape.json`.
 
 
 # Manual changes to separate text in blocks
@@ -56,7 +56,7 @@ First find out which blocks have multiple entries. Seems that ")." is a pretty c
 
 ```python
     # in python shell
-    %run bibliography.py
+    %run scrape.py
     block_counts = filter( lambda (i,b): b > 1, [ (i, block['text'].count(').')) for i,block in enumerate(blocks) ] )
 ```
 
@@ -84,7 +84,7 @@ Result is:
     (167, 2)
 ```
 
-Open `temp.json` and add the character sequence "` || `" between citations in blocks that contain multiple citations. Save changes to `temp.json`
+Open `scrape.json` and add the character sequence "` || `" between citations in blocks that contain multiple citations. Save changes to `scrape.json`
 
 
 # Split blocks
@@ -95,7 +95,7 @@ Run `python split-blocks.py > blocks.json`
 
 ```python
 # in file: split-blocks.py
-    with open('temp.json', 'r') as f:
+    with open('scrape.json', 'r') as f:
         blocks = json.load(f)
     
     for block in blocks:
@@ -226,4 +226,4 @@ Manually fix Brodish and Devine (2009): set href to empty string.
 
 # Grab annotations
 
-Run `python annotations.py > bibliography.json`. Needs to run uninterruped for about 12 minutes. No problems, resulting json contains 192 entries. Of these 41 contain no annotation.
+Run `python annotations.py > annotations.json`. Needs to run uninterruped for about 12 minutes. No problems, resulting json contains 192 entries. Of these 41 contain no annotation.
