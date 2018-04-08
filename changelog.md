@@ -227,3 +227,5 @@ Manually fix Brodish and Devine (2009): set href to empty string.
 # Grab annotations
 
 Run `python annotations.py > annotations.json`. Needs to run uninterruped for about 12 minutes. No problems, resulting json contains 192 entries. Of these 41 contain no annotation.
+
+Next. Try this differently, eliminating redundant name of study from annotation. Seems it won't work from scraping, study title is not constructed consistently among pages. Need to use regular expression to detect a 4-digit sequence.
