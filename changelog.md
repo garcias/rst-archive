@@ -226,4 +226,4 @@ Manually fix Brodish and Devine (2009): set href to empty string.
 
 # Grab annotations
 
-next
+Run `python annotations.py > bibliography.json`. Needs to run uninterruped for about 12 minutes. No problems, resulting json contains 192 entries. Of these 41 contain no annotation.
