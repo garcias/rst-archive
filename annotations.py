@@ -1,4 +1,4 @@
-from urllib2 import urlopen
+from urllib2 import urlopen, HTTPError
 from lxml import html
 from time import sleep
 import json
@@ -12,7 +12,9 @@ def extract_annotation(doc):
     elem = doc.xpath('/html/body/table/tr/td/table/tr[6]/td/table/tr[1]/td')[0]
     nav_links = elem.xpath('.//a')
     for nav in nav_links:
-        nav.getparent().remove(nav)
+        nav_text = nav.text_content().lower()
+        if ("back" in nav_text) or ("previous" in nav_text):
+            nav.getparent().remove(nav)
     
     return elem.text_content()
 
