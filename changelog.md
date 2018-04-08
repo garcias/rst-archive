@@ -182,8 +182,48 @@ Also checks for and removes duplicates, using `pandas.DataFrame.groupby` to iden
 
 In `citations.json`, add entry for Abrams, Eller, and Bryant b/c wasn't picked up in initial scrape.
 
-# Following links to grab annotations (next)
+# Following links to grab annotations
 
-Check that all links can be followed successfully.
+Check that each `href` property in citations starts with the word "bibliography", indicating a relative link.
 
+```python
+    [ 
+        (i, citation['href'][0:12]) 
+        for i, citation in enumerate(citations) 
+        if len(citation['href']) > 0 and citation['href'][0:12] != "bibliography" 
+    ]
+    #  [(86, u'https://web.')]
+```
 
+Manually fix Kellow (2005) so href is `bibliography_kellow_jones%20(2005).html`.
+
+Check that each annotation page exists on Internet Archive.
+
+```python
+    # in python shell:
+    from requests import get
+    for i,citation in enumerate(citations):
+        sleep(3)
+        href = citation['href']
+        if len(href) > 0:
+            print "{:4}: {}".format(i, get(base_url + href).status_code)
+    # 0: 200
+    # 1: 200
+    # ...
+```
+
+86th references returns a 404. Check explicitly:
+
+```python
+    # in python shell:
+    citations[17]['href']
+    # u'bibliography_brodish_devine.html'
+    get(base_url + "bibliography_brodish_devine.html.html").status_code
+    # 404
+```
+
+Manually fix Brodish and Devine (2009): set href to empty string.
+
+# Grab annotations
+
+next
