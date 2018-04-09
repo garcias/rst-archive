@@ -5,7 +5,6 @@
 3. follow hrefs to each page, on each page:
 4. focus on the main content in: 
     - /html/body/table/tbody/tr/td/table/tbody/tr[6]/td/table/tbody/tr[2]/td
-    - /html/body/table/tbody/tr/td/table/tbody/tr[6]/td/table/tbody/tr[2]/td
 4. Delete the nav table if it exists at 
     - /html/body/table/tbody/tr/td/table/tbody/tr[6]/td/table/tbody/tr[2]/td/span/table
 5. collect all a tags and make a list of their text_content and @href
@@ -34,4 +33,22 @@ The page `definition.html` has a nav bar containing the eight topics, containing
             'question' : questions[a.xpath('.//@href')[0]],
         } for a in page.xpath('.//a') 
     ]
+```
+
+## Follow links
+
+Follow each page to 
+Each topic is associated with a framing question. The questions are only listed on the front page (hidden as alt text of images). Parse that page and match the `<table>` element containing eight topic tiles as `page`. From each tile get the url and question, and build a dictionary mapping url => question.
+```python
+    base_url = 'https://web.archive.org/web/20170426143954/http://www.reducingstereotypethreat.org:80/'
+    url = base_url + topics[1]['href']
+    doc = html.parse(urlopen(url)).getroot()
+    page = doc.xpath('/html/body/table/tr/td/table/tr[6]/td/table/tr[2]/td')[0]
+
+    # check for nav table; if it exists, remove from parent
+    try:
+        nav = page.xpath('.//span/table')[0]
+        nav[0].getparent().remove(nav[0])
+    except IndexError:
+        print "no navigation found"
 ```
