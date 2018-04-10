@@ -1,7 +1,7 @@
 # Plan
 
-1. ~~Get list of topics from '/html/body/table/tbody/tr/td/table/tbody/tr[5]/td/table'; eight \<td\>s~~
-2. ~~from each \<td\>, get the a's @href, and its \<img\>'s @alt~~
+1. ~~Get list of topics from '/html/body/table/tbody/tr/td/table/tbody/tr[5]/td/table'; eight `<td>`s~~
+2. ~~from each `<td>`, get the `<a>`'s `@href`, and its `<img>`'s `@alt`~~
 3. follow hrefs to each page, on each page:
 4. focus on the main content in: 
     - /html/body/table/tbody/tr/td/table/tbody/tr[6]/td/table/tbody/tr[2]/td
@@ -35,7 +35,7 @@ The page `definition.html` has a nav bar containing the eight topics, containing
     ]
 ```
 
-## Follow links
+## Follow a link
 
 Follow each topic link to its topic page. Except for topics[0], each page has a navigation table, so find and remove it.
 
@@ -49,6 +49,8 @@ Follow each topic link to its topic page. Except for topics[0], each page has a 
         nav = page.xpath('.//span/table')[0]
         nav.getparent().getparent().remove(nav.getparent())
 ```
+
+## Grab links and subtopic headings in page
 
 Search for all `<a>`s that have href, and collect both the `@href` and text. Do the same for `<a>`s that have name property, and collect their `@name` and text; these are subtopic headings.
 
@@ -78,6 +80,8 @@ Finally grab the text.
     text = ' '.join(page.text_content().split())
 ```
 
+### Check that you can find each one in the cleaned-up text
+
 Seems like each heading is unique within the text. But some references are linked 2 or 3 times.
 
 ```python
@@ -93,3 +97,5 @@ Seems like each heading is unique within the text. But some references are linke
     #  (3, 'bibliography_steele_aronson.html'),
     #  (2, 'bibliography_oswald_harvey.html')]    
 ```
+
+
