@@ -28,4 +28,35 @@ topics = [
 def cleanup(s):
     return ' '.join(s.split())
 
+
+url = base_url + topics[1]['href']
+doc = html.parse(urlopen(url)).getroot()
+page = doc.xpath('/html/body/table/tr/td/table/tr[6]/td/table/tr[2]/td')[0]
+
+# check for nav table; if it exists, remove from parent
+try:
+    nav = page.xpath('.//span/table')[0]
+    nav.getparent().getparent().remove(nav.getparent())
+except IndexError:
+    print "no navigation found"
+
+links = [ 
+    {
+        'href' : a.attrib['href'], 
+        'text' : cleanup(a.text_content())
+    } 
+    for a in page.xpath('.//a[@href]') 
+    if not "#top" in a.attrib['href']
+]
+
+headings = [
+    {
+        'name' : a.attrib['name'],
+        'text' : cleanup(a.getparent().text_content())
+    }
+    for a in page.xpath('.//a[@name]') 
+]
+
+text = cleanup(page.text_content())
+
 # print json.dumps(blocks, indent=2)

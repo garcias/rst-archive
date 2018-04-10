@@ -37,10 +37,9 @@ The page `definition.html` has a nav bar containing the eight topics, containing
 
 ## Follow links
 
-Follow each page to 
-Each topic is associated with a framing question. The questions are only listed on the front page (hidden as alt text of images). Parse that page and match the `<table>` element containing eight topic tiles as `page`. From each tile get the url and question, and build a dictionary mapping url => question.
+Follow each topic link to its topic page. Except for topics[0], each page has a navigation table, so find and remove it.
+
 ```python
-    base_url = 'https://web.archive.org/web/20170426143954/http://www.reducingstereotypethreat.org:80/'
     url = base_url + topics[1]['href']
     doc = html.parse(urlopen(url)).getroot()
     page = doc.xpath('/html/body/table/tr/td/table/tr[6]/td/table/tr[2]/td')[0]
@@ -48,7 +47,49 @@ Each topic is associated with a framing question. The questions are only listed 
     # check for nav table; if it exists, remove from parent
     try:
         nav = page.xpath('.//span/table')[0]
-        nav[0].getparent().remove(nav[0])
-    except IndexError:
-        print "no navigation found"
+        nav.getparent().getparent().remove(nav.getparent())
+```
+
+Search for all `<a>`s that have href, and collect both the `@href` and text. Do the same for `<a>`s that have name property, and collect their `@name` and text; these are subtopic headings.
+
+```python
+    links = [ 
+        {
+            'href' : a.attrib['href'], 
+            'text' : cleanup(a.text_content())
+        } 
+        for a in page.xpath('.//a[@href]') 
+        if not "#top" in a.attrib['href']
+    ]
+
+    headings = [
+        {
+            'name' : a.attrib['name'],
+            'text' : cleanup(a.getparent().text_content())
+        }
+        for a in page.xpath('.//a[@name]') 
+    ]
+
+```
+
+Finally grab the text.
+
+```python
+    text = ' '.join(page.text_content().split())
+```
+
+Seems like each heading is unique within the text. But some references are linked 2 or 3 times.
+
+```python
+    [ text.count(heading['text']) for heading in headings ]
+    # [1, 1, 1, 1, 2, 1, 1, 1, 1]
+
+    [ (text.count(link['text']), link['href'] ) for link in links if text.count(link['text']) > 1 ]
+    # [(3, 'bibliography_steele_aronson.html'),
+    #  (2, 'bibliography_oswald_harvey.html'),
+    #  (2, 'bibliography_keller.html'),
+    #  (3, 'bibliography_steele_aronson.html'),
+    #  (2, 'bibliography_keller.html'),
+    #  (3, 'bibliography_steele_aronson.html'),
+    #  (2, 'bibliography_oswald_harvey.html')]    
 ```
