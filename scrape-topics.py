@@ -36,7 +36,7 @@ def cleanup(s):
 
 all_links = []
 
-for topic in topics[1:]:
+for topic in topics:
     url = base_url + topic['href']
     doc = html.parse(urlopen(url)).getroot()
     page = doc.xpath('/html/body/table/tr/td/table/tr[6]/td/table/tr[2]/td')[0]
