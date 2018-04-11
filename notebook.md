@@ -160,4 +160,13 @@ Finish up by assigning to the `topics` list.
     topics[1]['subtopics'] = subtopics
 ```
 
+Now extend to multiple pages, by replacing `topics[1]` with iterator `topic`.
 
+```python
+    for topic in topics[1:]:
+        url = base_url + topic['href']
+        # etc ...
+
+    topic['text'] =  scanned_text[0]
+    topic['subtopics'] = subtopics
+```
