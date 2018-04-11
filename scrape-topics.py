@@ -52,7 +52,7 @@ links = [
 headings = [
     {
         'name' : a.attrib['name'],
-        'text' : cleanup(a.getparent().text_content())
+        'title' : cleanup(a.getparent().text_content())
     }
     for a in page.xpath('.//a[@name]') 
 ]
