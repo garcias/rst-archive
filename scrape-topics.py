@@ -34,6 +34,7 @@ def relativize(link):
 def cleanup(s):
     return ' '.join(s.split())
 
+all_links = []
 
 for topic in topics[1:]:
     url = base_url + topic['href']
@@ -57,6 +58,8 @@ for topic in topics[1:]:
         for a in page.xpath('.//a[@href]') 
         if not "#top" in a.attrib['href']
     ]
+    
+    all_links += links
 
     subtopics = [
         {
