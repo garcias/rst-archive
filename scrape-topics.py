@@ -52,7 +52,7 @@ for topic in topics[1:]:
 
     links = [ 
         {
-            'href' : a.attrib['href'], 
+            'href' : relativize(a.attrib['href']), 
             'text' : cleanup(a.text_content())
         } 
         for a in page.xpath('.//a[@href]') 
@@ -63,7 +63,7 @@ for topic in topics[1:]:
 
     subtopics = [
         {
-            'name' : relativize(a.attrib['name']),
+            'name' : a.attrib['name'],
             'title' : cleanup(a.getparent().text_content())
         }
         for a in page.xpath('.//a[@name]') 
