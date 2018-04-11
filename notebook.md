@@ -64,12 +64,13 @@ Search for all `<a>`s that have href, and collect both the `@href` and text. Do 
         if not "#top" in a.attrib['href']
     ]
 
-    headings = [
-        {
-            'name' : a.attrib['name'],
-            'text' : cleanup(a.getparent().text_content())
-        }
-        for a in page.xpath('.//a[@name]') 
+    topics = [ 
+        { 
+            'href' : a.xpath('.//@href')[0],
+            'topic' : a.xpath('./img/@alt')[0],
+            'question' : questions[a.xpath('.//@href')[0]],
+        } 
+        for a in page.xpath('.//a') 
     ]
 
 ```
@@ -96,6 +97,67 @@ Seems like each heading is unique within the text. But some references are linke
     #  (2, 'bibliography_keller.html'),
     #  (3, 'bibliography_steele_aronson.html'),
     #  (2, 'bibliography_oswald_harvey.html')]    
+```
+
+# Add tags for links in text
+
+## First try using repeated scans
+
+Search for link text throughout cleaned up page and replace with markdown-style `[]()` tags.
+
+```python
+    # This doesn't work!
+    md_text = text
+    for link in links:
+        pattern = "(?<!\[)" + re.escape(link['text'])  # excludes tagged text from match
+        repl = u"[{text}]({href})".format(**link)
+        md_text = re.sub(pattern, repl, md_text, count=1)
+```
+
+Doesn't work! Some text (like "2007a") are contained in links and get matched and substituted. Need a different approach.
+
+## Second try using fragmentation
+
+This time remove already-scanned text each time a match is found. (Did you know you can unpack a list? First time doing it!)
+
+```python
+    scanned_text = []
+    unscanned_text = text
+
+    for link in links:
+        [ left, right ] = unscanned_text.split(link['text'], 1)  # maxsplit = 1
+        center = u"[{text}]({href})".format(**link)
+        scanned_text.append(left)
+        scanned_text.append(center)
+        unscanned_text = right
+
+    scanned_text.append(unscanned_text)
+    text = ''.join(scanned_text)
+```
+
+Search for subtopic text throughout cleaned up page and break into individual sections. Store each in a new `text` field.
+
+```python
+    scanned_text = []
+    unscanned_text = text
+
+    for subtopic in subtopics:
+        [ left, right ] = unscanned_text.split(subtopic['title'], 1)
+        scanned_text.append(left)
+        unscanned_text = right
+
+    last_text = re.sub("[Bb]ack [Tt]o [Tt]op", "", unscanned_text)
+    scanned_text.append(last_text)
+    
+    for i, subtopic in enumerate(subtopics):
+        subtopic['text'] = scanned_text[i + 1]
+```
+
+Finish up by assigning to the `topics` list.
+
+```python
+    topics[1]['text'] =  scanned_text[0]
+    topics[1]['subtopics'] = subtopics
 ```
 
 

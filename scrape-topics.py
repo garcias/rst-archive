@@ -1,6 +1,7 @@
 from urllib2 import urlopen
 from lxml import html, etree
 import json
+import re
 
 base_url = 'https://web.archive.org/web/20170426143954/http://www.reducingstereotypethreat.org:80/'
 
@@ -21,7 +22,8 @@ topics = [
         'href' : a.xpath('.//@href')[0],
         'topic' : a.xpath('./img/@alt')[0],
         'question' : questions[a.xpath('.//@href')[0]],
-    } for a in page.xpath('.//a') 
+    }
+    for a in page.xpath('.//a') 
 ]
 
 
@@ -40,6 +42,8 @@ try:
 except IndexError:
     print "no navigation found"
 
+# get links and headings from tags in text, then clean up text
+
 links = [ 
     {
         'href' : a.attrib['href'], 
@@ -49,7 +53,7 @@ links = [
     if not "#top" in a.attrib['href']
 ]
 
-headings = [
+subtopics = [
     {
         'name' : a.attrib['name'],
         'title' : cleanup(a.getparent().text_content())
@@ -58,5 +62,40 @@ headings = [
 ]
 
 text = cleanup(page.text_content())
+
+# scan for link text, replace with Markdown-style link tags
+
+scanned_text = []
+unscanned_text = text
+
+for link in links:
+    [ left, right ] = unscanned_text.split(link['text'], 1)  # maxsplit = 1
+    center = u"[{text}]({href})".format(**link)
+    scanned_text.append(left)
+    scanned_text.append(center)
+    unscanned_text = right
+
+scanned_text.append(unscanned_text)
+text = ''.join(scanned_text)
+
+
+# scan for heading text, break into subtopic blocks
+
+scanned_text = []
+unscanned_text = text
+
+for subtopic in subtopics:
+    [ left, right ] = unscanned_text.split(subtopic['title'], 1)
+    scanned_text.append(left)
+    unscanned_text = right
+
+last_text = re.sub("[Bb]ack [Tt]o [Tt]op", "", unscanned_text)
+scanned_text.append(last_text)
+
+for i, subtopic in enumerate(subtopics):
+    subtopic['text'] = scanned_text[i + 1]
+
+topics[1]['text'] =  scanned_text[0]
+topics[1]['subtopics'] = subtopics
 
 # print json.dumps(blocks, indent=2)
