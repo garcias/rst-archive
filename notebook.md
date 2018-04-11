@@ -170,3 +170,37 @@ Now extend to multiple pages, by replacing `topics[1]` with iterator `topic`.
     topic['text'] =  scanned_text[0]
     topic['subtopics'] = subtopics
 ```
+
+### Test that links are good
+
+In loop, accumulate links into `all_links`. After running script, test that each link goes to an actual page.
+
+```python
+    from requests import get
+    [
+        {
+            'index' : i,
+            'code' : get(base_url + link['href']).status_code,
+            'href' : link['href'],
+        }
+        for i, link in enumerate(all_links)
+    ]
+
+    [ link['index'] for link in _ if link['code'] != 200 ]
+    # []
+```
+
+```python
+    [ 
+        [ 
+            u"{title:40.40}: {text:60.60}".format(**subtopic) 
+            for subtopic in topic['subtopics'] 
+        ] 
+        for topic in topics
+    ]
+    # [u'Decreased performance                   :  Perhaps the most widely known consequence of stereotype thr',
+    #  u'Internal Attributions for Failure       :  Individuals often attempt to identify what factors are resp',
+    #  u'Reactance                               :  Stereotype threat can produce the opposite effects, actuall',    
+```
+
+ "Low coping sense of humor" missing from topic list, its text is in "Internal Locus of Control/Proactive Personality"

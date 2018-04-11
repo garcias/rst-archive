@@ -34,7 +34,6 @@ def relativize(link):
 def cleanup(s):
     return ' '.join(s.split())
 
-all_links = []
 
 for topic in topics:
     url = base_url + topic['href']
@@ -59,8 +58,6 @@ for topic in topics:
         if not "#top" in a.attrib['href']
     ]
     
-    all_links += links
-
     subtopics = [
         {
             'name' : a.attrib['name'],
@@ -106,4 +103,4 @@ for topic in topics:
     topic['text'] =  scanned_text[0]
     topic['subtopics'] = subtopics
 
-# print json.dumps(blocks, indent=2)
+ print json.dumps(topics, indent=2)
