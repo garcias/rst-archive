@@ -208,3 +208,15 @@ In loop, accumulate links into `all_links`. After running script, test that each
 ```bash
     python scrape-topics.py > topics.json
 ```
+
+"Low coping sense of humor" missing from topic list, its text is in "Internal Locus of Control/Proactive Personality"
+
+In `topics.json`, insert record at line 93, and move text beginning with " One's sense of humor can also" into this record:
+
+```json
+      {
+        "text": " One's sense of humor can also affect how one views and interacts with the world. Humor appears to buffer ... ", 
+        "name": "lowcoping", 
+        "title": "Low coping sense of humor"
+      }, 
+```
