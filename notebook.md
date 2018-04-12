@@ -220,3 +220,42 @@ In `topics.json`, insert record at line 93, and move text beginning with " One's
         "title": "Low coping sense of humor"
       }, 
 ```
+
+## Validate links
+
+```python
+    with open('topics.json','r') as f:
+        topics = json.load(f)
+    
+    with open('./bibliography/bibliography.json','r') as f:
+        bibliography = json.load(f)
+    
+    all_href = []
+    all_href += [ topic['href'] for topic in topics ]
+    all_href += [ b['href'] for b in bibliography]
+    
+    all_text = []
+    all_text +=  [ " ".join([ subtopic['text'] for subtopic in topic['subtopics'] ]) for topic in topics ]
+    all_text +=  [topic['text'] for topic in topics ]
+    all_text += [ b['annotation'] for b in bibliography if 'annotation' in b ]
+    all_text = ' '.join(all_text)
+    all_links = re.compile('(?<=\]\().*?html(?=\))').findall(all_text)
+
+    [ link for link in all_links if not link in all_href ]
+    # [u'bibliography_osborne_2001.html',
+    #  u'q04.html', 
+    #  u'bibliography_katz_roberts_robinson.html',
+    #  u'bibliography.html']
+```
+
+- 'bibliography_osborne_2001.html'
+    - year dropped from url in later versions of RST => 'bibliography_osborne.html'
+    - replace reference to point to later url
+- 'q04.html'
+    - changed in later versions of RST => 'situations.html'
+    - replace reference to point to later url
+- 'bibliography_katz_roberts_robinson.html'
+    - pulled from later versions of RST
+    - no change
+
+Make change manually.

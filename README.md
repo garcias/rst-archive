@@ -31,7 +31,7 @@ This project is my attempt to extract the relevant data from the archived pages.
 ## To do
 
 - [x] Scrape topic pages and store as JSON
-- [ ] Check manually
+- [x] Check manually
 - [ ] Validate links
 - [ ] Add attribution
 
