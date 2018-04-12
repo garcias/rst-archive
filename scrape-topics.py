@@ -103,4 +103,4 @@ for topic in topics:
     topic['text'] =  scanned_text[0]
     topic['subtopics'] = subtopics
 
- print json.dumps(topics, indent=2)
+print json.dumps(topics, indent=2)

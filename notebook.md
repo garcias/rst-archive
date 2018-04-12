@@ -203,4 +203,8 @@ In loop, accumulate links into `all_links`. After running script, test that each
     #  u'Reactance                               :  Stereotype threat can produce the opposite effects, actuall',    
 ```
 
- "Low coping sense of humor" missing from topic list, its text is in "Internal Locus of Control/Proactive Personality"
+## Do the scrape
+
+```bash
+    python scrape-topics.py > topics.json
+```
