@@ -12,16 +12,24 @@ This project is my attempt to extract the relevant data from the archived pages.
 
 ## How?
 
-1. Run `bibliography.py` to scrape the bibliography page (on Wayback) into `temp.json`.
-2. Inspect `temp.json` and make manual changes, such as joining journal name and volume, or appending missing text to citation.
-3. Detect blocks of text containing multiple citations entries.
-4. Mark separation between citations with ` || `.
-5. Run `split-blocks.py` to split text into lists of citations within each block; save into `blocks.json`.
-6. Detect and fix discrepancies between citation list and journal and href lists within each block.
-7. Run `split-citations.py` to create a separate bibliographic entry for each citation; save into `citations.json`
-8. Run `annotations.py` to scrape annotation text from Internet Archive; save into `annotations.json`
-9. Run `separate-title.py` to extract title text into new field; save into `bibliography.json`.
+1. Bibliography
+    1. Run `bibliography.py` to scrape the bibliography page (on Wayback) into `temp.json`.
+    2. Inspect `temp.json` and make manual changes, such as joining journal name and volume, or appending missing text to citation.
+    3. Detect blocks of text containing multiple citations entries.
+    4. Mark separation between citations with ` || `.
+    5. Run `split-blocks.py` to split text into lists of citations within each block; save into `blocks.json`.
+    6. Detect and fix discrepancies between citation list and journal and href lists within each block.
+    7. Run `split-citations.py` to create a separate bibliographic entry for each citation; save into `citations.json`
+    8. Run `annotations.py` to scrape annotation text from Internet Archive; save into `annotations.json`
+    9. Run `separate-title.py` to extract title text into new field; save into `bibliography.json`.
+2. Topic pages
+    1. Run `scrape-topics.py` to scrape the topic pages (on Wayback) into `topics.json`.
+    2. Inspect `topics.json` and make manual changes, such as paragraph breaks and missing subtopics
+3. Validation
+    - Check that each link in the topic pages corresponds to an `href` in either the bibliography entries or to a topic page.
 
 ## To do
 
-- Scrape topic pages and store as JSON
+- [x] Scrape topic pages and store as JSON
+- [ ] Check manually
+- [ ] Validate links

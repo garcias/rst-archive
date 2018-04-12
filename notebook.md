@@ -1,7 +1,7 @@
 # Plan
 
-1. ~~Get list of topics from '/html/body/table/tbody/tr/td/table/tbody/tr[5]/td/table'; eight `<td>`s~~
-2. ~~from each `<td>`, get the `<a>`'s `@href`, and its `<img>`'s `@alt`~~
+1. Get list of topics from '/html/body/table/tbody/tr/td/table/tbody/tr[5]/td/table'; eight `<td>`s
+2. from each `<td>`, get the `<a>`'s `@href`, and its `<img>`'s `@alt`
 3. follow hrefs to each page, on each page:
 4. focus on the main content in: 
     - /html/body/table/tbody/tr/td/table/tbody/tr[6]/td/table/tbody/tr[2]/td

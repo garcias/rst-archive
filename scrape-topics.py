@@ -45,7 +45,7 @@ for topic in topics:
         nav = page.xpath('.//span/table')[0]
         nav.getparent().getparent().remove(nav.getparent())
     except IndexError:
-        print "no navigation found"
+        pass
 
     # get links and headings from tags in text, then clean up text
 
