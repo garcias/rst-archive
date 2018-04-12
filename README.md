@@ -33,3 +33,12 @@ This project is my attempt to extract the relevant data from the archived pages.
 - [x] Scrape topic pages and store as JSON
 - [ ] Check manually
 - [ ] Validate links
+- [ ] Add attribution
+
+## Reflection
+
+This was one of the more challenging scraping projects I've done in a while. I'm glad I invested time to learn Xpath syntax; I really needed it for navigating the structures in this website. Regular expressions expedited some of the parsing, too. I appreciated Python's extensive support especially the mercy that is the `re.escape` function!
+
+The website overall had a reasonable high-level structure, divided between topics and bibliography. A lot of the challenge arose from the text itself. Not every paragraph fell into a `<p>` node, and around any inline element (`span`, `a`, formatting) was a veritable alphabet soup of various white-space characters. Unfortunately there was no clear pattern to the number or sequence of these characters, so I couldn't use them to infer paragraph breaks. My best guess is that the text was originally written in some word processor like MS Word, and then copied and pasted into a CMS interface. The process likely would have included invisible formatting codes that the CMS then translated into these excess characters.
+
+I learned to embrace regular expressions, having resisted or written around them for the past 15 years. Another thing I discovered was that you can unpack lists much as you would tuples; not sure how I missed that for the past 20 years. And this is not new, but I noticed that I continue to favor comprehensions for list and dictionary creation. This became apparent when writing the scanning routine in `scrape-topics.py`, which really called for a more imperative pattern.
