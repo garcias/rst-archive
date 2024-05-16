@@ -2,6 +2,14 @@
 
 Recovering data from the Internet Archive snapshot of Reducing Stereotype Threat
 
+## Update: Website hosting the articles
+
+I created a [website](https://garcias.github.io/reducing-stereotype-threat) to render the archived data as modern web pages. The site offers [8 review articles](https://garcias.github.io/reducing-stereotype-threat/reviews/) about different aspects of stereotype threat, each linking to summary pages of relevant articles. Thanks to the Jekyll theme [Just The Docs](https://github.com/just-the-docs/just-the-docs), the entire archive is searchable! 
+
+I use this site for employee training, each person reads a summary of a researhc study, and analyzes how stereotype threat operates in it.
+
+[Source](https://github.com/garcias/reducing-stereotype-threat)
+
 ## Why?
 
 For years Catherine Good (Baruch College) and Steve Stroessner (Barnard College) maintained `www.reducingstereotypethreat.org`. It consisted of an annotated bibliography of research on stereotype threat, along with discussions of various aspects of stereotype threat (e.g. vulnerable groups, situations, mechanisms, ...). This made it an indispensable resource for learning about stereotype threat and then teaching it to others. When training teaching assistants, I would send them to the site to explore specific questions. This research would prime them for discussion at training sessions.
