@@ -6,9 +6,9 @@ Recovering data from the Internet Archive snapshot of Reducing Stereotype Threat
 
 I created a [website](https://garcias.github.io/reducing-stereotype-threat) to render the archived data as modern web pages. The site offers [8 review articles](https://garcias.github.io/reducing-stereotype-threat/reviews/) about different aspects of stereotype threat, each linking to summary pages of relevant articles. Thanks to the Jekyll theme [Just The Docs](https://github.com/just-the-docs/just-the-docs), the entire archive is searchable! 
 
-I use this site for employee training, each person reads a summary of a researhc study, and analyzes how stereotype threat operates in it.
+I use this site for employee training, each person reads a summary of a research study, and analyzes how stereotype threat operates in it.
 
-[Source](https://github.com/garcias/reducing-stereotype-threat)
+[Source of the website](https://github.com/garcias/reducing-stereotype-threat)
 
 ## Why?
 
